@@ -1,12 +1,17 @@
 {
-  "name": "sd-0x-project-trybewallet",
+  "name": "my-wallet",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "engines": {
     "node": "16"
   },
   "homepage": "https://ioott.github.io/my-wallet",
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
@@ -28,13 +33,6 @@
     "styled-components": "^5.3.5",
     "stylelint-order": "4.1.0",
     "tailwind-styled-components": "^2.1.7"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx"
   },
   "eslintConfig": {
     "extends": "react-app"
