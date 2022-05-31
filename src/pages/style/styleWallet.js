@@ -123,3 +123,18 @@ export const Table = style.table`
     }
   }
 `;
+export const ExitButton = style.button`
+  background-color: #221007;
+  border: 1.5px solid #f3d5b5;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 12px 12px;
+  color: white;
+  :focus {
+  border: 1px solid #221007;
+  }
+  margin-right: 20px;
+
+`;

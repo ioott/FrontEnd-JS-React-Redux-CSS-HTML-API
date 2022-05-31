@@ -52,14 +52,16 @@ class Login extends React.Component {
   }
 
   // função do botão
-  onClickFunction = () => {
-    const { setUserEmail } = this.props;
+  onClickFunction = (event) => {
+    event.preventDefault();
+    const { setUserEmail, history } = this.props;
     const { userEmail } = this.state;
     this.setState({
       userEmail,
       loginOk: true,
     });
     setUserEmail(userEmail);
+    history.push('/');
   }
 
   render() {
@@ -86,7 +88,7 @@ class Login extends React.Component {
               ? null
               : <Button
                   id="btn"
-                  type="button"
+                  type="submit"
                   disabled={ isButtonDisabled }
                   onClick={this.onClickFunction}
                   autofocus="true"

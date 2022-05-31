@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import propTypes from 'prop-types';
 import {
   fetchCurrencies,
@@ -21,7 +22,8 @@ import {
   Img,
   DivH1,
   Button,
-  Table
+  Table,
+  ExitButton
 } from './style/styleWallet';
 
 class Wallet extends React.Component {
@@ -35,6 +37,8 @@ class Wallet extends React.Component {
 
   componentDidMount() {
     const { dispatchGetCurrencies } = this.props;
+
+
     dispatchGetCurrencies();
     const addForm = document.getElementById('add-form');
     addForm.setAttribute('style', 'display: flex');
@@ -168,6 +172,10 @@ class Wallet extends React.Component {
     });
   }
 
+  exitButton = () => {
+    window.history.back();
+  }
+
   render() {
     const {
       userEmail,
@@ -179,7 +187,6 @@ class Wallet extends React.Component {
     const editForm = document.getElementById('edit-form');
     const addForm = document.getElementById('add-form');
 
-
     return (
       <Div>
         <Header>
@@ -189,6 +196,12 @@ class Wallet extends React.Component {
             {' '}
             <br /><strong>{ userEmail }</strong>
           </P>
+          <ExitButton
+            type="submit"
+            onClick={ this.exitButton }
+          >
+            Sair
+          </ExitButton>
         </Header>
 
         <DivH1>
@@ -382,9 +395,7 @@ class Wallet extends React.Component {
                   <td>
                     <button
                       type="button"
-                      // eslint-disable-next-line
                       onClick={() => (
-                        // eslint-disable-next-line
                         dispatchRemoveExpense(expense.id),
                         this.convertedValue(Number(expense.value * exchangeRates[1].ask).toFixed(2))
                       )}
