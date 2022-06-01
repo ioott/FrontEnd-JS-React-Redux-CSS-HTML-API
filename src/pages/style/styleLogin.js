@@ -26,6 +26,25 @@ export const Container = style.div`
     border-top-left-radius: 50px;
     transform: scale(1.05);
   }
+  @media screen and (max-width:290px){
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 15vh auto 2vh auto;
+    width: 250px;
+    height: 400px;
+    background-color: #221007;
+    box-shadow: 2px 2px 20px #191919,
+              -2px -2px 20px #292929;
+    transition: border-radius cubic-bezier(0.075, 0.82, 0.165, 1) 1s,
+                transform cubic-bezier(0.075, 0.82, 0.165, 1) 1s;
+    :hover {
+      border-bottom-right-radius: 50px;
+      border-top-left-radius: 50px;
+      transform: scale(1.05);
+    }
+  }
 `;
 
 export const Img = style.img`
@@ -90,6 +109,9 @@ export const Button = style.button`
 export const ContainerP = style.div`
   width: 300px;
   margin: 0 40vw 0 40vw;
+  @media screen and (max-width:290px){
+    width: 200px;
+  }
 `;
 
   export const P = style.p`

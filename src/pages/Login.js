@@ -101,7 +101,7 @@ class Login extends React.Component {
         { loginOk && <Redirect to="/carteira" /> }
         </Container>
         <ContainerP>
-          <P>- Desenvolvido por Vania Ioott -<br />Com JS, HTML, React, Redux e Styled Components/ CSS</P>
+          <P>- Desenvolvido por Vania Ioott -<br />Com JS, HTML, React, Redux e Styled Components/ CSS responsivo</P>
         </ContainerP>
       </Main>
     );

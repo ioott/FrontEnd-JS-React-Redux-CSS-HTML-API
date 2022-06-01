@@ -12,6 +12,7 @@ import {
 } from '../actions/index';
 import {
   Div,
+  DivHeader,
   Header,
   P,
   H1,
@@ -192,20 +193,22 @@ class Wallet extends React.Component {
 
     return (
       <Div>
-        <Header>
-          <p>Total: <strong>R$ { totalExpenses.toFixed(2) }</strong></p>
-          <P>
-            Usuário:
-            {' '}
-            <br /><strong>{ userEmail }</strong>
-          </P>
-          <ExitButton
-            type="submit"
-            onClick={ this.exitButton }
-          >
-            Sair
-          </ExitButton>
-        </Header>
+        <DivHeader>
+          <Header>
+            <p>Total: <br /><strong>R$ { totalExpenses.toFixed(2) }</strong></p>
+            <P>
+              Usuário:
+              {' '}
+              <br /><strong>{ userEmail }</strong>
+            </P>
+            <ExitButton
+              type="submit"
+              onClick={ this.exitButton }
+            >
+              Sair
+            </ExitButton>
+          </Header>
+        </DivHeader>
 
         <DivH1>
           <Img src="https://cdn-icons-png.flaticon.com/512/1077/1077974.png"></Img>
@@ -219,6 +222,16 @@ class Wallet extends React.Component {
               type="date"
               id="date"
               name="date"
+            />
+          </label>
+          <label htmlFor="description">
+            <strong>Descrição:</strong> <br />
+            <Input
+              type="text"
+              id="description"
+              name="description"
+              size="20"
+              maxlength="20"
             />
           </label>
           <label htmlFor="expense">
@@ -237,16 +250,6 @@ class Wallet extends React.Component {
             >
               {currencies.map((code) => <option key={ code.code }>{ code }</option>)}
             </Select>
-          </label>
-          <label htmlFor="description">
-            <strong>Descrição:</strong> <br />
-            <Input
-              type="text"
-              id="description"
-              name="description"
-              size="20"
-              maxlength="20"
-            />
           </label>
           <label htmlFor="tag">
             <strong>Tag:</strong> <br />
@@ -295,6 +298,17 @@ class Wallet extends React.Component {
               autofocus="true"
             />
           </label>
+          <label htmlFor="description">
+            <strong>Descrição:</strong> <br />
+            <Input
+              data-testid="description-input"
+              type="text"
+              id="edit-description"
+              name="description"
+              size="20"
+              maxlength="20"
+            />
+          </label>
           <label htmlFor="expense">
             <strong>Valor:</strong> <br />
             <Input
@@ -312,17 +326,6 @@ class Wallet extends React.Component {
             >
               {currencies.map((code) => <option key={ code.code }>{ code }</option>)}
             </Select>
-          </label>
-          <label htmlFor="description">
-            <strong>Descrição:</strong> <br />
-            <Input
-              data-testid="description-input"
-              type="text"
-              id="edit-description"
-              name="description"
-              size="20"
-              maxlength="20"
-            />
           </label>
           <label htmlFor="edit-tag">
             <strong>Tag:</strong> <br />

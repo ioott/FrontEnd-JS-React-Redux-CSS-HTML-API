@@ -8,20 +8,40 @@ export const Div = style.div`
   align-items: center;
 `;
 
+export const DivHeader = style.div`
+  display: flex;
+`;
+
 export const Header = style.header`
   display: flex;
   color: white;
+  width: 100vw;
   height: 70px;
   justify-content: space-between;
   align-items: center;
   padding-right: 30px;
   padding-left: 30px;
   background-color: #221007;
+
+  @media screen and (max-width:290px){
+    flex-wrap: wrap;
+    color: white;
+    height: 70px;
+    font-size: 12px;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: #221007;
+  }
 `;
 
 export const P = style.p`
   font-size: 14px;
   line-height: 20px;
+  @media screen and (max-width:290px){
+    font-size: 12px;
+  }
 `;
 
 export const H1 = style.h1`
@@ -53,13 +73,35 @@ export const Form = style.form`
     line-height: 15px;
     flex-wrap: wrap;
   }
-  @media screen and (max-width: 768px){
+  @media screen and (min-width:430px) and (max-width: 768px){
     color: white;
     height: 150px;
     font-size: 12px;
     justify-content: space-around;
     align-items: center;
     padding: 10px 30px;
+    background-color: #8b5e34;
+    line-height: 15px;
+    flex-wrap: wrap;
+  }
+  @media screen and (min-width:300px) and (max-width: 439px){
+    color: white;
+    height: 250px;
+    font-size: 12px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: #8b5e34;
+    line-height: 15px;
+    flex-wrap: wrap;
+  }
+  @media screen and (max-width:290px){
+    color: white;
+    height: 330px;
+    font-size: 12px;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 10px;
     background-color: #8b5e34;
     line-height: 15px;
     flex-wrap: wrap;
@@ -302,6 +344,7 @@ export const ExitButton = style.button`
   border-radius: 4px;
   padding: 12px 12px;
   color: white;
-  :focus {
-  border: 1px solid #221007;
+  @media screen and (max-width:290px){
+  font-size: 10px;
+  }
 `;
