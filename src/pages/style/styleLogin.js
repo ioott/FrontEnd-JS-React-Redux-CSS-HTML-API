@@ -1,5 +1,13 @@
 import style from 'styled-components';
 
+export const Main = style.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const Container = style.div`
   display:flex;
   flex-direction: column;

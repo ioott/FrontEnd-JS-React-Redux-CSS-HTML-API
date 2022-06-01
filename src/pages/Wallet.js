@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import propTypes from 'prop-types';
 import {
   fetchCurrencies,
@@ -22,6 +21,7 @@ import {
   Img,
   DivH1,
   Button,
+  DivTable,
   Table,
   ExitButton
 } from './style/styleWallet';
@@ -122,6 +122,9 @@ class Wallet extends React.Component {
 
     userExpense.value = '';
     description.value = '';
+    date.value = '';
+    tag.value = '';
+    method.value = '';
   }
 
   editButtonClick = () => {
@@ -211,7 +214,7 @@ class Wallet extends React.Component {
 
         <Form id='add-form'>
           <label htmlFor="date">
-            Data:
+            <strong>Data:</strong> <br />
             <Input
               type="date"
               id="date"
@@ -219,7 +222,7 @@ class Wallet extends React.Component {
             />
           </label>
           <label htmlFor="expense">
-            Valor:
+            <strong>Valor:</strong> <br />
             <Input
               type="number"
               id="expense"
@@ -228,7 +231,7 @@ class Wallet extends React.Component {
             />
           </label>
           <label htmlFor="coin">
-            Moeda
+            <strong>Moeda:</strong> <br />
             <Select
               id="coin"
             >
@@ -236,37 +239,40 @@ class Wallet extends React.Component {
             </Select>
           </label>
           <label htmlFor="description">
-            Descrição:
+            <strong>Descrição:</strong> <br />
             <Input
-              data-testid="description-input"
               type="text"
               id="description"
               name="description"
+              size="20"
+              maxlength="20"
             />
           </label>
           <label htmlFor="tag">
-            Tag
+            <strong>Tag:</strong> <br />
             <Select
               id="tag"
             >
-              <option>Selecione</option>
-              <option>Alimentação</option>
+              <option></option>
+              <option>Alimentação </option>
               <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
+              <option>Trabalho </option>
+              <option>Transporte </option>
               <option>Saúde</option>
+              <option>Outro</option>
             </Select>
           </label>
           <label htmlFor="method">
-            Método de pagamento
+            <strong>Forma de Pagamento:</strong> <br />
             <Select
               data-testid="method-input"
               id="method"
             >
-              <option>Selecione</option>
+              <option></option>
               <option>Dinheiro</option>
               <option>Cartão de crédito</option>
               <option>Cartão de débito</option>
+              <option>PIX</option>
             </Select>
           </label>
           <Button
@@ -276,11 +282,12 @@ class Wallet extends React.Component {
             Adicionar
           </Button>
         </Form>
+
         <Form id='edit-form' hidden>
           <input id='edit-id' hidden />
           <input id='edit-rates' hidden />
           <label htmlFor="date">
-            Data:
+            <strong>Data:</strong> <br />
             <Input
               type="date"
               id="edit-date"
@@ -289,16 +296,17 @@ class Wallet extends React.Component {
             />
           </label>
           <label htmlFor="expense">
-            Valor:
+            <strong>Valor:</strong> <br />
             <Input
               type="text"
               id="edit-expense"
               name="expense"
+              size="10"
               required
             />
           </label>
           <label htmlFor="coin">
-            Moeda
+            <strong>Moeda:</strong> <br />
             <Select
               id="edit-coin"
             >
@@ -306,37 +314,41 @@ class Wallet extends React.Component {
             </Select>
           </label>
           <label htmlFor="description">
-            Descrição:
+            <strong>Descrição:</strong> <br />
             <Input
               data-testid="description-input"
               type="text"
               id="edit-description"
               name="description"
+              size="20"
+              maxlength="20"
             />
           </label>
           <label htmlFor="edit-tag">
-            Tag
+            <strong>Tag:</strong> <br />
             <Select
               id="edit-tag"
             >
-              <option>Selecione</option>
-              <option>Alimentação</option>
+              <option></option>
+              <option>Alimentação </option>
               <option>Lazer</option>
-              <option>Trabalho</option>
-              <option>Transporte</option>
+              <option>Trabalho </option>
+              <option>Transporte </option>
               <option>Saúde</option>
+              <option>Outro</option>
             </Select>
           </label>
           <label htmlFor="edit-method">
-            Método de pagamento
+            <strong>Forma de Pagamento:</strong> <br />
             <Select
               data-testid="method-input"
               id="edit-method"
             >
-              <option>Selecione</option>
+              <option></option>
               <option>Dinheiro</option>
-              <option>Cartão de crédito</option>
-              <option>Cartão de débito</option>
+              <option>Cartão de crédito </option>
+              <option>Cartão de débito </option>
+              <option>PIX</option>
             </Select>
           </label>
           <Button
@@ -346,68 +358,72 @@ class Wallet extends React.Component {
             Concluído
           </Button>
         </Form>
-        <Table>
-          <tr>
-            <th>Data</th>
-            <th>Valor</th>
-            <th>Moeda</th>
-            <th>Descrição</th>
-            <th>Tag</th>
-            <th>Método de pagamento</th>
-            <th>Câmbio utilizado</th>
-            <th>Moeda de conversão</th>
-            <th>Valor convertido</th>
-            <th>Editar</th>
-            <th />
-          </tr>
-          {
-            expenses.map((expense) => {
-              const exchangeRates = (Object.entries(expense.exchangeRates))
-                .find((element) => element[0] === expense.currency);
 
-              return (
-                <tr key={expense.id}>
-                  <td>{(expense.date).split('-').reverse().join('/')}</td>
-                  <td>{Number(expense.value).toFixed(2)}</td>
-                  <td>{(exchangeRates[1].name).split('/',1)}</td>
-                  <td>{expense.description}</td>
-                  <td>{expense.tag}</td>
-                  <td>{expense.method}</td>
-                  <td>{Number(exchangeRates[1].ask).toFixed(2)}</td>
-                  <td>Real</td>
-                  <td>{Number(expense.value * exchangeRates[1].ask).toFixed(2)}</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      className="checkbox"
-                      onChange={() => (
-                        // eslint-disable-next-line
-                        dispatchEditExpense(expense.id),
-                        this.convertedValue(Number(expense.value * exchangeRates[1].ask).toFixed(2)),
-                        editForm.removeAttribute('hidden'),
-                        editForm.setAttribute('style', 'display: flex'),
-                        addForm.setAttribute('hidden', 'true'),
-                        addForm.removeAttribute('style')
-                      )}
-                    >
-                    </input>
-                  </td>
-                  <td>
-                    <button
-                      type="button"
-                      onClick={() => (
-                        dispatchRemoveExpense(expense.id),
-                        this.convertedValue(Number(expense.value * exchangeRates[1].ask).toFixed(2))
-                      )}
-                    >
-                      Apagar
-                    </button>
-                  </td>
-                </tr>
-              );
-            })
-          }
-        </Table>
+        <DivTable>
+          <Table>
+            <tr>
+              <th>Data</th>
+              <th>Valor</th>
+              <th>Moeda</th>
+              <th>Descrição</th>
+              <th>Tag</th>
+              <th>Método de pagamento</th>
+              <th>Câmbio utilizado</th>
+              <th>Moeda de conversão</th>
+              <th>Valor convertido</th>
+              <th>Editar</th>
+              <th />
+            </tr>
+            {
+              expenses.map((expense) => {
+                const exchangeRates = (Object.entries(expense.exchangeRates))
+                  .find((element) => element[0] === expense.currency);
+
+                return (
+                  <tr key={expense.id}>
+                    <td>{(expense.date).split('-').reverse().join('/')}</td>
+                    <td>{Number(expense.value).toFixed(2)}</td>
+                    <td>{(exchangeRates[1].name).split('/',1)}</td>
+                    <td>{expense.description}</td>
+                    <td>{expense.tag}</td>
+                    <td>{expense.method}</td>
+                    <td>{Number(exchangeRates[1].ask).toFixed(2)}</td>
+                    <td>Real</td>
+                    <td>{Number(expense.value * exchangeRates[1].ask).toFixed(2)}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        className="checkbox"
+                        onChange={() => (
+                          // eslint-disable-next-line
+                          dispatchEditExpense(expense.id),
+                          this.convertedValue(Number(expense.value * exchangeRates[1].ask).toFixed(2)),
+                          editForm.removeAttribute('hidden'),
+                          editForm.setAttribute('style', 'display: flex'),
+                          addForm.setAttribute('hidden', 'true'),
+                          addForm.removeAttribute('style')
+                        )}
+                      >
+                      </input>
+                    </td>
+                    <td>
+                      <button
+                        type="button"
+                        onClick={() => (
+                          dispatchRemoveExpense(expense.id),
+                          this.convertedValue(Number(expense.value * exchangeRates[1].ask).toFixed(2))
+                        )}
+                      >
+                        Apagar
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })
+            }
+          </Table>
+        </DivTable>
+
       </Div>
     );
   }

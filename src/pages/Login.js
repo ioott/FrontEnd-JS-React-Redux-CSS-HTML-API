@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { saveUserEmail } from '../actions/index';
 import {
+  Main,
   Container,
   Img,
   Form,
@@ -67,7 +68,7 @@ class Login extends React.Component {
   render() {
     const { isButtonDisabled, loginOk } = this.state;
     return (
-      <main>
+      <Main>
         <Container>
           <Img src="https://www.seekpng.com/png/full/332-3321868_jewelry-for-charismatic-appearance-wallets-organised-black-and.png" />
           <Form>
@@ -100,9 +101,9 @@ class Login extends React.Component {
         { loginOk && <Redirect to="/carteira" /> }
         </Container>
         <ContainerP>
-          <P>- desenvolvido por vania ioott -<br />com js, html, react, redux e styled components</P>
+          <P>- Desenvolvido por Vania Ioott -<br />Com JS, HTML, React, Redux e Styled Components/ CSS</P>
         </ContainerP>
-      </main>
+      </Main>
     );
   }
 }
