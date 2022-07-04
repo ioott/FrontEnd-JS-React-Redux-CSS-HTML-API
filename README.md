@@ -1,4 +1,4 @@
-# My Wallet
+# <a href="ioott.github.io/my-wallet">My Wallet</a>
 ### Projeto de FrontEnd
 <div align="left">
   <img alt="HTML" src="https://img.shields.io/badge/-HTML-black?style=flat-square&logo=html5&logoColor=white">
@@ -11,8 +11,6 @@
 <br/>
 
 O site é uma plataforma para lançamento de despesas em várias moedas, apresentando a cotação do momento por meio de requisição a uma API e fazendo a conversão para Real.
-
-No ar em [ioott.github.io/my-wallet] (ioott.github.io/my-wallet).
 
 https://user-images.githubusercontent.com/98191041/177219489-00e8b929-188c-46c2-985a-015b0fb38a8d.mp4
 
