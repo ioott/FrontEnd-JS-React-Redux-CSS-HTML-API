@@ -1,4 +1,4 @@
-# <a href="ioott.github.io/my-wallet">My Wallet</a>
+## <a href="ioott.github.io/my-wallet">My Wallet</a>
 ### Projeto de FrontEnd
 <div align="left">
   <img alt="HTML" src="https://img.shields.io/badge/-HTML-black?style=flat-square&logo=html5&logoColor=white">
